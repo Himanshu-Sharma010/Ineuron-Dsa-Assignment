@@ -1,0 +1,206 @@
+Q.1
+
+interface Shape {
+    void draw();
+    double getArea();
+}
+
+
+class Rectangle implements Shape {
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("Drawing a rectangle");
+    }
+
+    @Override
+    public double getArea() {
+        return length * width;
+    }
+}
+
+
+class Circle implements Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("Drawing a circle");
+    }
+
+    @Override
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+public class InterfaceExample {
+    public static void main(String[] args) {
+        Shape rectangle = new Rectangle(5, 3);
+        rectangle.draw();
+        System.out.println("Area: " + rectangle.getArea());
+
+        Shape circle = new Circle(2.5);
+        circle.draw();
+        System.out.println("Area: " + circle.getArea());
+    }
+}
+
+
+
+
+
+Q.2
+
+abstract class AbstractClass {
+    
+    public void displayMessage() {
+        System.out.println("This is a concrete method in the abstract class.");
+    }
+
+    
+    public void printMessage() {
+        System.out.println("This is another concrete method in the abstract class.");
+    }
+
+    
+    public abstract void abstractMethod1();
+
+    
+    public abstract void abstractMethod2();
+}
+
+
+class ConcreteClass extends AbstractClass {
+    @Override
+    public void abstractMethod1() {
+        System.out.println("Implementation of abstractMethod1 in the concrete class.");
+    }
+
+    @Override
+    public void abstractMethod2() {
+        System.out.println("Implementation of abstractMethod2 in the concrete class.");
+    }
+}
+
+
+public class AbstractMethodExample {
+    public static void main(String[] args) {
+        ConcreteClass concreteObj = new ConcreteClass();
+
+        concreteObj.displayMessage();
+        concreteObj.printMessage();
+        concreteObj.abstractMethod1();
+        concreteObj.abstractMethod2();
+    }
+}
+
+
+
+
+
+
+Q.3
+
+@FunctionalInterface
+interface Calculator {
+    int calculate(int num1, int num2);
+}
+
+
+public class FunctionalInterfaceExample {
+    public static void main(String[] args) {
+        
+        Calculator addition = (a, b) -> a + b;
+        int sum = addition.calculate(5, 3);
+        System.out.println("Sum: " + sum);
+
+        Calculator subtraction = FunctionalInterfaceExample::subtract;
+        int difference = subtraction.calculate(10, 4);
+        System.out.println("Difference: " + difference);
+    }
+
+    
+    public static int subtract(int num1, int num2) {
+        return num1 - num2;
+    }
+}
+
+
+
+
+
+Q.4
+an interface is a reference type that defines a contract or a set of method signatures without providing the implementation details. It is a blueprint of a class, specifying the methods that must be implemented by any class that implements the interface. An interface can also define constants and default methods.
+
+
+
+Q.5
+Defining a Contract: Interfaces establish a contract or a set of method signatures that classes must adhere to when implementing the interface.
+
+Achieving Abstraction: Interfaces allow you to define pure abstraction by separating the declaration of methods from their implementation. 
+
+Enabling Polymorphism: Interfaces facilitate polymorphism, allowing objects of different classes that implement the same interface to be treated interchangeably.
+
+Supporting Multiple Inheritance: Unlike classes, which cannot inherit from multiple superclasses, interfaces can be implemented by multiple classes.
+
+
+
+
+Q.6
+lambda expressions were introduced as a new language feature. A lambda expression is a concise way to represent a functional interface, which is an interface with a single abstract method.
+like: methodname(int vari, Double pi) -> { System.out.println("Hello Captain America"); }
+
+
+
+
+Q.7
+
+Yes, lambda expressions can be passed as arguments to methods.
+interface MdaInterface {
+    void performAction();
+}
+
+public class LambdaExample {
+    public static void executeAction(MyInterface action) {
+        action.performAction();
+    }
+
+    public static void main(String[] args) {
+        executeAction(() -> System.out.println("Performing action")); 
+}
+}
+
+
+
+
+
+Q.8
+functional interface is an interface that has exactly one abstract method. It is also known as a Single Abstract Method (SAM) interface or a "functional interface" because it can be used as the target for lambda expressions or method references.
+
+
+
+
+Q.9
+Concise Syntax: Lambda expressions offer a more concise and readable syntax compared to traditional anonymous inner classes. 
+
+Functional Programming Style: Lambda expressions promote a functional programming style in Java. 
+
+Simplified Multithreading and Concurrency: Lambda expressions make it easier to work with multithreading and concurrency in Java
+
+
+
+
+Q.10
+No, it is not mandatory for a lambda expression to have parameters. Whether a lambda expression requires parameters or not depends on the functional interface that it is being assigned to.

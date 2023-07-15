@@ -1,0 +1,86 @@
+Q.1
+There are three types of the conditional operator in Java:
+
+1.AND
+2.OR
+3.Ternary Operator
+
+AND:
+The operator is applied between two Boolean expressions. It is denoted by the two AND operators (&&). It returns true if and only if both expressions are true, else returns false.
+
+OR:
+The operator is applied between two Boolean expressions. It is denoted by the two OR operator (||). It returns true if any of the expression is true, else returns false.
+
+Ternary Operator
+The meaning of ternary is composed of three parts. The ternary operator (? :) consists of three operands. It is used to evaluate Boolean expressions.
+
+
+Q.2
+There are three types of operators based on the number of operands. An operator is called a unary, binary, or ternary operator based on the number of operands. If an operator takes one operand, it is called a unary operator; if it takes two operands, it is called a binary operator; if it takes three operands, it is called a ternary operator.
+
+
+Q.3
+The switch case in java executes one statement from multiple ones. Thus, it is like an if-else-if ladder statement. It works with a lot of data types.
+
+
+Q.4
+Conditional statements in Java are the executable block of code (or branch to a specific code) dependent on certain conditions. These statements are also known as decision statements or selection statements in Java.
+
+Following are the statements covered under conditional statements in Java:
+
+1.If statement
+2.If else statement
+3.Switch Statement
+
+
+Q.5
+ if (Condition) { Statement1; }
+ else { Statement2; }
+
+
+Q.6
+In Java, string equals() method compares the two given strings based on the data/content of the string.
+
+Q.7
+ mutable strings are those strings whose content can be changed without creating a new object. StringBuffer and StringBuilder are mutable versions of String in java.
+
+like: 1.StringBuilder vider = new StringBuilder("Himanshu");
+      2.StringBuffer buffer = new StringBuffer("Ineuron");
+
+Q.8
+public class SortingString {
+   public static void main(String args[]) {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Enter a string value: ");
+      String str = sc.nextLine();
+      char charArray[] = str.toCharArray();
+      Arrays.sort(charArray);
+      System.out.println(new String(charArray));
+   }
+}
+
+
+Q.9
+class Check_Letter
+{
+	public static void main(String[] args)
+	{
+		String str = "String Exercises";
+		boolean pre = false;
+		for(int i = 0;i<str.length();i++)
+		{
+			if(str.charAt(i) == 'e')
+			{
+				pre=true;
+				break;
+			}
+		}
+		System.out.println(pre);
+	}
+}
+
+
+
+
+Q.10
+The Java string constant pool is an area in heap memory where Java stores literal string values.

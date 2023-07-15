@@ -1,0 +1,87 @@
+Q.1
+A compiler is computer software that readily translates programming language into machine code or assembly language or low-level language.
+An interpreter is a computer program that converts program statements into machine code. Program statements include source code, pre-compiled code, and scripts.
+
+
+Q.2
+Java Development Kit aka JDK is the core component of Java Environment and provides all the tools, executables, and binaries required to compile, debug, and execute a Java Program.
+JVM is the heart of Java programming language. When we execute a Java program, JVM is responsible for converting the byte code to the machine-specific code.
+JRE is the implementation of JVM. It provides a platform to execute java programs. JRE consists of JVM, Java binaries, and other classes to execute any program successfully.
+
+
+Q.3
+1.Method Area
+2.Heap
+3.Stack
+4.Program Counter Register
+5.Native Method Stack
+
+
+Q.4
+The JIT or Just-In-Time compiler is an essential part of the JRE Java Runtime Environment that is responsible for performance optimization of java based applications during run time.
+
+
+Q.5
+Java provides four types of access modifiers or visibility specifiers like: default, public, private, and protected.
+
+
+Q.6
+A Java compiler is a program that takes the text file work of a developer and compiles it into a platform-independent Java file. Java compilers include the Java Programming Language Compiler (javac).
+
+
+Q.7
+Local variable: These variables are declared and used within a specific method, constructor, or block of code. They are only accessible within the scope in which they are defined.
+Instance variable: These variables are declared within a class but outside any method, constructor, or block of code. 
+Static variable: These variables are declared with the static keyword within a class but outside any method, constructor, or block of code.
+
+
+Q.8
+Primitive data types - includes byte , short , int , long , float , double , boolean and char. Non-primitive data types - such as String , Arrays and Classes.
+
+
+Q.9
+In Java, an identifier can be a class name, method name, variable name, or label.
+
+
+Q.10
+A. 
+Classloader is a subsystem of JVM which is used to load class files. Whenever we run the java program, it is loaded first by the classloader. There are three built-in classloaders in Java.
+
+Bootstrap ClassLoader: This is the first classloader which is the super class of Extension classloader. It loads the rt.jar file which contains all class files of Java Standard Edition like java.lang package classes, java.net package classes, java.util package classes, java.io package classes, java.sql package classes etc.
+
+Extension ClassLoader: This is the child classloader of Bootstrap and parent classloader of System classloader. It loades the jar files located inside $JAVA_HOME/jre/lib/ext directory.
+
+Application ClassLoader: This is the child classloader of Extension classloader. It loads the classfiles from classpath. By default, classpath is set to current directory. You can change the classpath using "-cp" or "-classpath" switch. It is also known as Application classloader.
+
+B.
+Method Area:
+Method Area stores per-class structures such as the runtime constant pool, field and method data, the code for methods.
+
+c.
+Heap:
+It is the runtime data area in which objects are allocated.
+
+D.
+Stack:
+Java Stack stores frames. It holds local variables and partial results, and plays a part in method invocation and return.
+
+E.
+Program Counter Register:
+PC  register contains the address of the Java virtual machine instruction currently being executed.
+
+F.
+Native Method Stack:
+It contains all the native methods used in the application.
+
+G.
+Execution Engine:
+It contains:
+
+1.virtual processor
+2.Interpreter: Read bytecode stream then execute the instructions.
+3.Just-In-Time(JIT) compiler
+
+H.
+Java Native Interface:
+Java Native Interface (JNI) is a framework which provides an interface to communicate with another application written in another language like C, C++, Assembly etc
+

@@ -1,0 +1,339 @@
+
+
+
+
+Q.1
+
+class BankAccount {
+    private String accountHolderName;
+    private double balance;
+
+    public BankAccount(String accountHolderName, double initialBalance) {
+        this.accountHolderName = accountHolderName;
+        this.balance = initialBalance;
+    }
+
+    public String getAccountHolderName() {
+        return accountHolderName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: $" + amount);
+        } else {
+            System.out.println("Invalid amount. Deposit failed.");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: $" + amount);
+        } else {
+            System.out.println("Insufficient balance or invalid amount. Withdrawal failed.");
+        }
+    }
+}
+
+
+
+
+
+public class BankingSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<BankAccount> accounts = new ArrayList<>();
+
+        boolean exit = false;
+
+        while (!exit) {
+            System.out.println("1. Create Account");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter account holder name: ");
+                    scanner.nextLine();
+                    String accountHolderName = scanner.nextLine();
+                    System.out.print("Enter initial balance: ");
+                    double initialBalance = scanner.nextDouble();
+
+                    BankAccount account = new BankAccount(accountHolderName,
+initialBalance);
+                    accounts.add(account);
+                    System.out.println("Account created successfully.");
+                    break;
+
+                case 2:
+                    System.out.print("Enter account holder name: ");
+                    scanner.nextLine();
+                    String depositAccountHolderName = scanner.nextLine();
+                    System.out.print("Enter deposit amount: ");
+                    double depositAmount = scanner.nextDouble();
+
+                    boolean foundDepositAccount = false;
+                    for (BankAccount depositAccount : accounts) {
+                        if (depositAccount.getAccountHolderName().equalsIgnoreCase(depositAccountHolderName)) {
+                            depositAccount.deposit(depositAmount);
+                            foundDepositAccount = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundDepositAccount) {
+                        System.out.println("Account not found.");
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter account holder name: ");
+                    scanner.nextLine();
+                    String withdrawAccountHolderName = scanner.nextLine();
+                    System.out.print("Enter withdrawal amount: ");
+                    double withdrawAmount = scanner.nextDouble();
+
+                    boolean foundWithdrawAccount = false;
+                    for (BankAccount withdrawAccount : accounts) {
+                        if (withdrawAccount.getAccountHolderName().equalsIgnoreCase(withdrawAccountHolderName)) {
+                            withdrawAccount.withdraw(withdrawAmount);
+                            foundWithdrawAccount = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundWithdrawAccount) {
+                        System.out.println("Account not found.");
+                    }
+                    break;
+
+                case 4:
+                    exit = true;
+                    System.out.println("Exiting the program. Goodbye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
+
+
+
+
+
+
+
+Q.2
+
+class Parent {
+    public void display() {
+        System.out.println("This is the display method in the Parent class.");
+    }
+
+    public void show() {
+        System.out.println("This is the show method in the Parent class.");
+    }
+}
+
+
+class Child extends Parent {
+    @Override
+    public void display() {
+        System.out.println("This is the display method in the Child class.");
+    }
+    
+    public void additionalMethod() {
+        System.out.println("This is an additional method in the Child class.");
+    }
+}
+
+
+public class InheritanceExample {
+    public static void main(String[] args) {
+        Parent parent = new Parent();
+        parent.display(); 
+        parent.show(); 
+
+        Child child = new Child();
+        child.display(); 
+        child.show(); 
+        child.additionalMethod(); 
+
+
+        Parent polymorphicRef = new Child();
+        polymorphicRef.display(); 
+        polymorphicRef.show(); 
+
+        Child childRef = (Child) polymorphicRef;
+        childRef.additionalMethod(); 
+    }
+}
+
+
+
+
+Q.3
+
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+
+public class RuntimePolymorphismExample {
+    public static void main(String[] args) {
+        Animal animal1 = new Animal();
+        animal1.sound(); 
+
+        Animal animal2 = new Dog();
+        animal2.sound(); 
+
+        Animal animal3 = new Cat();
+        animal3.sound(); 
+    }
+}
+
+
+
+
+Q.4
+
+class Calculator {
+    public int add(int num1, int num2) {
+        return num1 + num2;
+    }
+
+    public double add(double num1, double num2) {
+        return num1 + num2;
+    }
+
+    public int add(int num1, int num2, int num3) {
+        return num1 + num2 + num3;
+    }
+}
+
+
+public class CompileTimePolymorphismExample {
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+
+        int sum1 = calculator.add(5, 10);
+        System.out.println("Sum 1: " + sum1);
+
+        double sum2 = calculator.add(3.14, 2.86);
+        System.out.println("Sum 2: " + sum2);
+
+        int sum3 = calculator.add(1, 2, 3);
+        System.out.println("Sum 3: " + sum3);
+    }
+}
+
+
+
+
+Q.5
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+
+public class RuntimePolymorphismExample {
+    public static void main(String[] args) {
+        Animal animal1 = new Animal();
+        animal1.sound(); 
+
+        Animal animal2 = new Dog();
+        animal2.sound(); 
+
+        Animal animal3 = new Cat();
+        animal3.sound(); 
+    }
+}
+
+
+
+
+
+Q.6
+Data Protection: Encapsulation helps in protecting the data of a class by making it private, preventing direct access from outside the class.
+Information Hiding: Encapsulation enables information hiding, where the internal details and implementation of a class are hidden from other classes or components.
+Code Flexibility and Maintainability: Encapsulation promotes modularity and encapsulates related data and behaviors within a class.
+Code Reusability: Encapsulation supports code reuse through the concept of classes and objects. 
+
+
+Q.7
+
+No, Java is not considered a 100% object-oriented programming language. While Java is primarily object-oriented, it does have certain elements that are not strictly object-oriented. Here are a few reasons why Java is not considered 100% object-oriented:
+
+Primitive Data Types: Java includes primitive data types like int, double, boolean, etc., which are not objects. These types are not part of any class hierarchy and do not have associated methods or inheritance. However, Java provides wrapper classes (e.g., Integer, Double, Boolean) to treat these primitives as objects when needed.
+
+Static Members and Methods: Java allows the use of static members (variables and methods) that belong to the class itself rather than instances of the class. Static members can be accessed without creating an object, and they are not associated with any particular instance. 
+
+
+
+Q.8
+Modularity and Code Organization: Abstraction helps in breaking down a system into manageable, modular components. 
+Implementation Flexibility: With abstraction, you can define a common interface or abstract class that represents a set of related objects or behaviors.
+Encapsulation of Complexity: Abstraction encapsulates complexity by hiding the implementation details and exposing only relevant features.
+
+
+Q.9
+Abstraction is a fundamental concept in object-oriented programming that allows you to represent complex systems or entities in a simplified and more manageable manner. It involves capturing the essential features and behavior while hiding the unnecessary details. Let's explain abstraction with an example:
+
+Example: Car Abstraction->
+Consider a car as an example of abstraction. A car is a complex system with various components and functionalities. When we think of a car at a higher level of abstraction, we focus on its essential characteristics and functionalities without worrying about the internal mechanisms and implementation details.
+
+
+Q.10
+In Java, the final keyword has multiple uses. When applied to a class, it denotes a final class.
+A final class is a class that cannot be subclassed or extended by any other class.
+Once a class is declared as final, it cannot have any subclasses. It is the highest level of restriction on class inheritance.
+
+
