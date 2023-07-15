@@ -1,0 +1,118 @@
+Q.1
+In Java, an exception is an event that occurs during the execution of a program and disrupts its normal flow. It represents an abnormal condition or error that may occur at runtime and needs to be handled to prevent the program from terminating abruptly.
+Exceptions in Java are represented by objects of classes derived from the java.lang.Exception class.
+
+
+Q.2
+Exception handling is a mechanism in programming that allows the detection, handling, and recovery from exceptional conditions or errors that may occur during the execution of a program. It provides a structured way to handle and manage runtime errors, preventing the program from terminating abruptly and allowing for graceful error recovery.
+
+key components:
+1.Throwing Exceptions
+2.Caching Exceptions
+3.Handling Exception
+4.Finally Block
+
+
+
+Q.3
+Checked exceptions are checked at compile-time, meaning the compiler enforces the programmer to handle or declare them.
+Unchecked exceptions are not checked at compile-time, meaning the compiler does not enforce the programmer to handle or declare them.
+
+
+Q.4
+Throw:
+It is used within a block of code to indicate that a specific exception has occurred or needs to be thrown.
+
+Throws:
+It specifies the types of exceptions that the method can potentially throw to the caller.
+
+
+
+Q.5
+Multithreading in Java refers to the concurrent execution of multiple threads within a single program. A thread represents a separate flow of execution that can run concurrently with other threads, allowing for simultaneous execution of multiple tasks.
+
+Advantages of multithreading in Java:
+
+Concurrency: Multithreading enables concurrent execution of tasks, allowing different parts of a program to run simultaneously. 
+
+Parallelism: Multithreading facilitates parallelism, which involves executing multiple tasks simultaneously on multiple processors or processor cores. 
+
+Responsiveness: By dividing a program into multiple threads, one thread can handle user interactions or respond to external events, while other threads perform background tasks. 
+
+Resource Utilization: Multithreading allows better utilization of system resources. By leveraging multiple threads, the CPU, memory, and I/O resources can be utilized more efficiently.
+
+
+
+
+Q.6
+
+class CustomException extends Exception {
+    public CustomException(String message) {
+        super(message);
+    }
+}
+
+
+public class CustomExceptionExample {
+    public static void main(String[] args) {
+        try {
+            performOperation();
+        } catch (CustomException e) {
+            System.out.println("Custom Exception caught: " + e.getMessage());
+        }
+    }
+
+    public static void performOperation() throws CustomException {
+       
+        boolean errorCondition = true;
+
+        if (errorCondition) {
+            throw new CustomException("Error: Custom Exception occurred");
+        } else {
+            System.out.println("Operation performed successfully");
+        }
+    }
+}
+
+
+
+
+Q.7
+Handle exceptions in Java:
+
+try block: The code that may potentially throw an exception is enclosed within a try block. The try block is followed by one or more catch blocks.
+
+catch block: Each catch block specifies the type of exception it can handle. If an exception of that type (or its subclasses) is thrown within the try block, control is transferred to the corresponding catch block.
+
+Exception handling: Within the catch block, you can provide the code to handle the exception.
+
+Multiple catch blocks: If you anticipate different types of exceptions, you can provide multiple catch blocks to handle each type separately. 
+
+finally block: The finally block, if present, is executed regardless of whether an exception occurred or not.
+
+
+
+Q.8
+It represents a single sequential flow of control that can perform tasks concurrently with other threads. 
+
+Thread Class: The Thread class in Java represents a thread of execution. You can create a new thread by extending the Thread class and overriding its run() method, which contains the code to be executed by the thread.
+
+Runnable Interface: Java also provides the Runnable interface, which can be implemented by a class to define the code that a thread will execute. 
+
+
+
+Q.9
+Extending the Thread Class:
+In this approach, you create a new class that extends the Thread class and override its run() method, which contains the code to be executed by the thread.
+The run() method should be implemented with the logic of the thread's tasks.
+You can then create an instance of the custom thread class and call its start() method to start the execution of the thread.
+
+Implementing the Runnable Interface:
+In this approach, you create a class that implements the Runnable interface and implements the run() method.
+The run() method should contain the logic of the thread's tasks.
+You then create an instance of the class and pass it as an argument to the Thread constructor.
+
+
+
+Q.10
+ It is responsible for reclaiming memory occupied by objects that are no longer reachable or referenced by the program, freeing developers from the burden of manually managing memory allocation and deallocation. 

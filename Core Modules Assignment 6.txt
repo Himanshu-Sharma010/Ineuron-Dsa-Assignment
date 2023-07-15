@@ -1,0 +1,138 @@
+Q.1
+ "Collection" refers to a group of objects or elements that are collectively represented as a single unit. The Collection framework in Java provides a set of interfaces, implementations, and algorithms to efficiently store, retrieve, manipulate, and process collections of objects.
+
+List: Represents an ordered collection of elements where duplicate values are allowed. It provides methods to access, insert, update, and remove elements at specific positions.
+
+Set: Represents a collection of unique elements, where duplicate values are not allowed. It ensures that each element is distinct based on its equals() method.
+
+Queue: Represents a collection that follows the First-In-First-Out (FIFO) order. It provides methods for adding elements at the end and removing elements from the front.
+
+Map: Represents a collection of key-value pairs, where each key is unique. It provides methods to access, insert, update, and remove elements based on the key.
+
+
+
+
+Q.2
+Collection (with a capital 'C'):
+
+Collection refers to a high-level interface in the Java Collection Framework.
+It is part of the java.util package and serves as the root interface for most common types of collections in Java.
+The Collection interface provides a set of methods to manipulate and access elements in a collection, such as adding, removing, iterating, and querying elements.
+
+collections (with a lowercase 'c'):
+
+Collections, in lowercase, refers to a utility class java.util.Collections provided by the Java API.
+The Collections class is a helper class that provides various utility methods for working with collections.
+It includes static methods for performing operations such as sorting, searching, shuffling, reversing, and synchronizing collections.
+
+
+
+
+Q.3
+
+The Collection framework in Java provides several advantages that make it a powerful tool for handling collections of objects. Here are some of the key advantages of the Collection framework:
+
+Code Reusability: The Collection framework offers a set of generic interfaces and classes that can be reused across different applications and scenarios. 
+
+Dynamic Size: The Collection framework allows collections to dynamically resize based on the number of elements they contain.
+ 
+Operations: The Collection framework provides efficient algorithms and data structures for common operations, such as insertion, retrieval, update, and deletion of elements. 
+
+Standardized APIs: The Collection framework provides a standardized set of APIs, making it easier to understand and work with collections. 
+
+Enhanced Functionality: The Collection framework provides additional functionality through utility classes such as Collections and Stream. 
+
+
+
+Q.4
+
+
+1. Collection: The `Collection` interface is the root interface of the collection hierarchy. It defines the basic operations that can be performed on a collection, such as adding, removing, querying, and iterating elements. Common subinterfaces of `Collection` include `List`, `Set`, and `Queue`.
+
+2. List: The `List` interface represents an ordered collection of elements where duplicate values are allowed. It extends the `Collection` interface and adds operations for accessing, inserting, updating, and removing elements at specific positions. Implementations of `List` include `ArrayList`, `LinkedList`, and `Vector`.
+
+3. Set: The `Set` interface represents a collection of unique elements, where duplicate values are not allowed. It extends the `Collection` interface and ensures that each element is distinct based on its `equals()` method. Implementations of `Set` include `HashSet`, `TreeSet`, and `LinkedHashSet`.
+
+4. Queue: The `Queue` interface represents a collection that follows the First-In-First-Out (FIFO) order. It extends the `Collection` interface and provides methods for adding elements at the end (enqueue) and removing elements from the front (dequeue). Implementations of `Queue` include `LinkedList` and `PriorityQueue`.
+
+5. Map: The `Map` interface represents a collection of key-value pairs, where each key is unique. It provides methods to access, insert, update, and remove elements based on the key. The keys are used to uniquely identify the values. Implementations of `Map` include `HashMap`, `TreeMap`, and `LinkedHashMap`.
+
+6. Iterator: The `Iterator` interface provides methods for iterating over the elements of a collection in a forward direction. It allows sequential access to the elements of a collection and supports operations like `hasNext()`, `next()`, and `remove()`. The `Iterator` interface is used extensively for iterating over collections.
+
+7. ListIterator: The `ListIterator` interface extends the `Iterator` interface and provides additional functionality for iterating over elements in a list. It allows bidirectional traversal of a list and supports operations like `hasNext()`, `next()`, `hasPrevious()`, `previous()`, `add()`, `set()`, and `remove()`.
+
+
+
+
+
+
+Q.5
+1. List: The `List` interface represents an ordered collection of elements where duplicate values are allowed. It extends the `Collection` interface and adds operations for accessing, inserting, updating, and removing elements at specific positions. Implementations of `List` include `ArrayList`, `LinkedList`, and `Vector`.
+
+2. Set: The `Set` interface represents a collection of unique elements, where duplicate values are not allowed. It extends the `Collection` interface and ensures that each element is distinct based on its `equals()` method. Implementations of `Set` include `HashSet`, `TreeSet`, and `LinkedHashSet`.
+
+
+
+Q.6
+Iterator:
+
+Unidirectional Iteration: Iterator allows for unidirectional iteration, meaning it supports traversing elements in a collection only in a forward direction.
+
+Basic Operations: Iterator provides basic operations like hasNext(), next(), and remove(). The hasNext() method checks if there are more elements, the next() method retrieves the next element, and the remove() method removes the last retrieved element from the underlying collection.
+
+ListIterator:
+
+Bidirectional Iteration: ListIterator allows for bidirectional iteration, meaning it supports traversing elements in a collection both forward and backward.
+
+Extended Operations: ListIterator extends the functionality of Iterator by providing additional methods like hasPrevious(), previous(), add(), set(), and previousIndex(). 
+
+
+
+
+Q.7
+Comparable:
+
+Natural Ordering: The Comparable interface is used for defining the natural ordering of objects. When a class implements Comparable, it specifies how instances of that class should be compared to each other.
+
+Single Comparison Logic: The Comparable interface contains a single method, compareTo(), which is implemented by the class that wants to define its natural ordering. The compareTo() method compares the current object with another object and returns a negative integer, zero, or a positive integer based on the comparison result.
+
+
+Comparator:
+
+External Comparison Logic: The Comparator interface is used for defining an external comparison logic for objects. It allows for defining multiple comparison strategies for objects that may not have a natural ordering or when you want to provide a different ordering than the natural one.
+
+Multiple Comparison Strategies: The Comparator interface contains a single method, compare(), which takes two objects as parameters and compares them based on the defined comparison logic. It returns a negative integer, zero, or a positive integer based on the comparison result.
+
+
+
+Q.8
+In a HashMap in Java, collision refers to a situation where two or more different keys are mapped to the same hash code and subsequently stored in the same bucket. It occurs when different objects produce the same hash code during the hashing process.
+
+
+
+
+Q.9
+HashMap:
+
+Ordering: HashMap does not maintain any particular order of its elements. The order of elements can change over time due to rehashing or resizing operations.
+
+Performance: HashMap provides constant-time performance for basic operations (insertion, retrieval, removal) on average, assuming a good hash function and minimal collisions.
+
+
+TreeMap:
+
+Ordering: TreeMap maintains the elements in sorted order based on the natural order of the keys or a custom comparator provided during its construction. It guarantees a deterministic ordering of elements.
+
+Performance: TreeMap provides logarithmic-time performance for basic operations (insertion, retrieval, removal) since it maintains a balanced binary search tree structure.
+
+
+
+
+Q.10
+LinkedHashMap is a class in Java that extends the HashMap class and provides a predictable iteration order of its elements.
+key characteristics and features of LinkedHashMap:
+
+Ordering: LinkedHashMap maintains the order of elements based on their insertion order. When iterating over the elements, they are returned in the same order in which they were added to the map.
+
+Key Equality: Like HashMap, LinkedHashMap determines key equality using the equals() and hashCode() methods.
+
