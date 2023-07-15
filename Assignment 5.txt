@@ -1,0 +1,169 @@
+Q.1
+public int[][] construct2DArray(int[] original, int m, int n) {
+    if(m*n!=original.length)  return new int[][]{};
+    int[][] res = new int[m][n];
+    for(int i=0;i<original.length;i++)
+        res[i/n][i%n]=original[i];
+    return res;
+}
+
+
+
+Q.2
+class Solution {
+    public int arrangeCoins(int n) {
+        long low = 1, high = n;
+        
+        while(low <= high){
+            long mid = low + (high-low)/2;
+            long sum  = mid*(mid+1)/2;
+            
+            if(sum == n){
+                return (int)mid;
+            } else if(sum < n){
+                low = mid+1;
+            } else {
+                high = mid-1;
+            }
+        }
+        
+        return (int)high;
+    }
+}
+
+
+
+
+
+Q.3
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        
+        int[] answer = new int[nums.length];
+        int i = 0, j = nums.length - 1, k = nums.length - 1;
+        
+        while (k >= 0) {
+            if (Math.abs (nums[i]) > Math.abs (nums[j])) {
+                answer[k--] = nums[i] * nums[i++];
+            }
+            else {
+                answer[k--] = nums[j] * nums[j--];
+            }
+        }
+        
+        return answer;
+    }
+}
+
+
+
+
+Q.4
+class Solution {
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        Set<Integer> s1 = new HashSet<Integer>();
+        Set<Integer> s2 = new HashSet<Integer>();
+        
+        for(int i : nums1){
+            s1.add(i);
+        }
+        for(int i : nums2){
+            s2.add(i);
+        }
+        List<List<Integer>> ret = new ArrayList();
+        ret.add(new ArrayList());
+        ret.add(new ArrayList());
+        for(int i : s1){
+            if(!s2.contains(i)){
+                ret.get(0).add(i);
+            }
+        }
+        for(int i : s2){
+            if(!s1.contains(i)){
+                ret.get(1).add(i);
+            }
+        }
+        
+        return ret;
+    }
+}
+
+
+
+
+Q.5
+class Solution {
+
+    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
+        Arrays.sort(arr2);    
+        int distance = 0;
+        
+        for (int val : arr1) {
+            if (notInRange(arr2, val - d, val + d)) {
+                distance++;
+            }
+        }    
+        
+        return distance;
+    }
+    
+   
+    private static boolean notInRange(int[] arr, int from, int to) {
+        int start = 0;
+        int end = arr.length - 1;
+        
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (arr[mid] >= from && arr[mid] <= to) {
+                return false;
+            } else if (arr[mid] < from) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        
+        return true;
+    }
+}
+
+
+
+
+
+Q.8
+class Solution {
+    public int[] findOriginalArray(int[] changed) {
+        
+        Arrays.sort(changed);
+            
+        if(changed.length%2!=0) return new int[0];
+        
+        int mid = changed.length/2;
+        
+        int[] res = new int[mid];
+        
+        int[] freq = new int[100001];
+        
+        for(int no : changed)
+            freq[no]++;
+        
+        int idx=0;
+        
+        for(int no: changed){
+            if(freq[no] > 0 && no*2 <= 100000 && freq[no*2]>0){
+                freq[no]--;
+                freq[no*2]--;
+                res[idx++] = no;
+            }
+        }
+        
+        for(int i=0; i<freq.length; i++){
+            if(freq[i]!=0) return new int[0];
+        }
+        
+        return res;
+        
+
+    }
+}

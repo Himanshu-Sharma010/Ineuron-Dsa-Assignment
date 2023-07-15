@@ -1,0 +1,185 @@
+Q.1
+class Solution {
+    public boolean isPowerOfThree(int n) {
+        
+        while(n!=0 && n%3 == 0) n/=3;
+        
+        return n==1; 
+    }
+}
+
+
+
+
+Q.2
+class Solution {
+    public int lastRemaining(int n) {
+        boolean isLeft = true;
+        int remaining = n;
+        int start = 1;     
+        int jump = 1;
+        
+        while(remaining > 1){
+            if(isLeft || (remaining % 2 != 0)){   
+                start += jump;
+            }
+            
+            remaining = remaining / 2;
+            jump = jump * 2;
+            isLeft = !isLeft;
+        }
+        return start;
+  
+
+
+
+
+Q.3
+
+
+class Solution {
+
+
+	static void powerSet(String str, int index, String curr)
+	{
+		int n = str.length();
+
+		
+		if (index == n) {
+			return;
+		}
+
+		
+		System.out.println(curr);
+
+
+		for (int i = index + 1; i < n; i++) {
+			curr += str.charAt(i);
+			powerSet(str, i, curr);
+
+
+			curr = curr.substring(0, curr.length() - 1);
+		}
+	}
+
+	
+	public static void main(String[] args)
+	{
+		String str = "abc";
+		int index = -1;
+		String curr = "";
+		powerSet(str, index, curr);
+	}
+}
+
+
+
+
+
+Q.4
+
+public class Solution{
+
+	
+	private static int recLen(String str)
+	{
+
+	
+		if (str.equals(""))
+			return 0;
+		else
+			return recLen(str.substring(1)) + 1;
+	}
+
+	
+	public static void main(String[] args)
+	{
+
+		
+		String str ="GeeksforGeeks";
+		System.out.println(recLen(str));
+	}
+}
+
+
+
+
+
+
+Q.5
+
+public class Solution {
+
+	
+	static boolean checkEquality(String s)
+	{
+		return (s.charAt(0) == s.charAt(s.length() - 1));
+	}
+	
+	static int countSubstringWithEqualEnds(String s)
+	{
+		int result = 0;
+		int n = s.length();
+	
+
+		for (int i = 0; i < n; i++)
+	
+		for (int len = 1; len <= n-i; len++)
+	
+			
+			if (checkEquality(s.substring(i, i + len)))
+				result++;
+	
+		return result;
+	}
+	
+	
+	public static void main(String args[])
+	{
+		String s = "abcab";
+		System.out.println(countSubstringWithEqualEnds(s));
+	}
+}
+
+
+
+
+
+
+
+Q.8
+
+
+class Solution {
+
+	
+	static boolean isConsonant(char ch)
+	{
+		
+		ch = Character.toUpperCase(ch);
+	
+		return !(ch == 'A' || ch == 'E' ||
+				ch == 'I' || ch == 'O' ||
+				ch == 'U') && ch >= 65 && ch <= 90;
+	}
+
+	static int totalConsonants(String str)
+	{
+		int count = 0;
+		for (int i = 0; i < str.length(); i++)
+	
+			
+			if (isConsonant(str.charAt(i)))
+				++count;
+		return count;
+	}
+	
+	public static void main(String args[])
+	{
+		String str = "abc de";
+		System.out.println( totalConsonants(str));
+	}
+}
+
+
+

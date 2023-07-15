@@ -1,0 +1,224 @@
+Q.1
+public int sqrt(int x) {
+    if (x == 0)
+        return 0;
+    int left = 1, right = Integer.MAX_VALUE;
+    while (true) {
+        int mid = left + (right - left)/2;
+        if (mid > x/mid) {
+            right = mid - 1;
+        } else {
+            if (mid + 1 > x/(mid + 1))
+                return mid;
+            left = mid + 1;
+        }
+    }
+}
+
+
+
+
+
+Q.2
+class Solution {
+    public int findPeakElement(int[] nums) {
+
+        int start = 0;
+        int end = nums.length-1;
+        while(start<end) {
+			
+		int mid = start+(end-start)/2;
+		
+		if (nums[mid]>nums[mid+1]) {
+			end=mid;
+		}
+		if (nums[mid]<nums[mid+1]) {
+			start = mid+1;
+		}
+		}
+		return start;
+    }
+}
+
+
+
+
+
+Q.3
+public class Solution {
+    public int missingNumber(int[] nums) {
+        int sum = 0;
+        for(int num: nums)
+            sum += num;
+            
+        return (nums.length * (nums.length + 1) )/ 2 - sum;
+    }
+}
+
+
+
+
+
+Q.4
+class Solution {
+    public int findDuplicate(int[] nums) {
+        for (int n : nums) {
+            if (nums[Math.abs(n)] < 0) {
+                return Math.abs(n);
+            } else {
+                nums[Math.abs(n)] *= -1;
+            }
+        }
+        return -1;
+    }
+}
+
+
+
+
+
+Q.5
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        HashSet<Integer> set = new HashSet<Integer>();
+        for(int i: nums1){
+            set.add(i);
+        }
+        
+        HashSet<Integer> intersection = new HashSet<Integer>();
+        for(int i: nums2){
+            if(set.contains(i)){
+                intersection.add(i);
+            }
+        }
+        int[] result = new int[intersection.size()];
+        int index = 0;
+        for(int i: intersection){
+            result[index++] = i;
+        }
+        
+        return result;
+    }
+}
+
+
+
+
+
+Q.7
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        
+        int ans[] = {-1,-1};
+        
+        // int ans[] = new int [2];
+         ans[0] = binarySearch(nums, target,true);
+        // if(ans[0] != -1){
+           ans[1] = binarySearch(nums, target,false);
+           
+        // }
+
+        // if(ans[0]==0 && ans[1]==0){
+
+        //     int acr[] = {-1,-1};
+        //    return acr;
+        // }
+        
+        return ans;
+        
+    }
+
+     public static int binarySearch(int[] arr, int target, boolean firstIndex) {
+    	
+    	
+    	// Q. Floor in a Sorted Array
+    	//means -->smallest number that is greater or equal to the target in given sorted array.
+        int left = 0;
+        int right = arr.length - 1;
+
+        int ans = -1;
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            
+           //always write == condition first in binary  search otherwise 
+            //we will not get desire result.
+            
+            // Check if the target is present at the middle
+          
+            
+            // If the target is smaller, ignore the right half
+            if(arr[mid]>target)
+                right = mid - 1;
+
+            // If the target is greater, ignore the left half
+            if (arr[mid] < target)
+                left = mid + 1;
+
+                 if (arr[mid] == target) {
+            	ans =  mid;
+            	if (firstIndex) {
+					right = mid-1;
+				}else {
+					left = mid+1;
+				}
+            	
+            }
+
+                 
+
+
+
+        }
+        // Target element was not found in the array
+        return ans;
+    }
+}
+
+
+
+
+
+
+Q.8
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+
+    HashMap<Integer, Integer> map = new HashMap<>(); 
+    ArrayList<Integer> list = new ArrayList<>(); 
+
+       
+        int i; 
+        
+             
+        for(i = 0; i < nums1.length; i++)
+        {
+            
+            map.put(nums1[i], map.getOrDefault(nums1[i], 0)+1);
+        }
+
+       
+        for(i = 0; i < nums2.length; i++)
+        {
+           
+            if(map.containsKey(nums2[i]) && map.get(nums2[i]) > 0)
+            {                
+                list.add(nums2[i]);                        
+                map.put(nums2[i], map.get(nums2[i])-1);     
+            }
+        }
+      
+        int [] arr = new int[list.size()];
+
+        
+     
+        for(i = 0; i < list.size(); i++)
+        {
+            arr[i] = list.get(i);
+        }
+        
+     
+        return arr;
+    }
+}

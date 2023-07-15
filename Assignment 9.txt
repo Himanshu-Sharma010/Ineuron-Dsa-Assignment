@@ -1,0 +1,127 @@
+Q.1
+public boolean isPowerOfTwo(int n) {
+    if(n<=0)
+        return false;
+    return ((n&(n-1))==0);
+}
+
+
+
+
+Q.2
+class Solution{
+ 
+   
+    static int findSum(int n)
+    {
+        int sum = 0;
+        for (int x = 1; x <= n; x++)
+            sum = sum + x;
+        return sum;
+    }
+ 
+  
+    public static void main(String args[])
+    {
+        int n = 5;
+        System.out.println(findSum(n));
+    }
+}
+
+
+
+
+
+Q.3
+class Test {
+	
+	static int factorial(int n)
+	{
+		if (n == 0)
+			return 1;
+
+		return n * factorial(n - 1);
+	}
+
+	
+	public static void main(String[] args)
+	{
+		int num = 5;
+		System.out.println("Factorial of " + num
+						+ " is " + factorial(5));
+	}
+}
+
+
+
+
+
+Q.5
+class RecursiveMax
+{
+  public static void main(String[] args)
+  {
+    int[] arr = {10, 5, 7, 9, 15, 6, 11, 8, 12, 2, 3};
+    int max = recursiveMax(arr, arr.length);
+    System.out.println("Maximum element: " + max);
+  }
+ 
+  static int recursiveMax(int[] arr, int length)
+  {
+    if (length == 1)
+      return arr[0];
+    return max(recursiveMax(arr, length - 1), arr[length - 1]);
+  }
+ 
+  private static int max(int n1, int n2)
+  {
+    return n1 > n2 ? n1 : n2;
+  }	
+}
+
+
+
+
+Q.7
+
+public class Permutation {
+
+	
+	public static void main(String[] args)
+	{
+		String str = "ABC";
+		int n = str.length();
+		Permutation permutation = new Permutation();
+		permutation.permute(str, 0, n - 1);
+	}
+
+	
+	
+	private void permute(String str, int l, int r)
+	{
+		if (l == r)
+			System.out.println(str);
+		else {
+			for (int i = l; i <= r; i++) {
+				str = swap(str, l, i);
+				permute(str, l + 1, r);
+				str = swap(str, l, i);
+			}
+		}
+	}
+
+	
+	public String swap(String a, int i, int j)
+	{
+		char temp;
+		char[] charArray = a.toCharArray();
+		temp = charArray[i];
+		charArray[i] = charArray[j];
+		charArray[j] = temp;
+		return String.valueOf(charArray);
+	}
+}
+
+
+
+

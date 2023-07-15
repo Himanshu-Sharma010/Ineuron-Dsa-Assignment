@@ -1,0 +1,363 @@
+Q.1
+
+
+class Solution {
+
+
+	static class Node {
+		int data;
+		Node next;
+	}
+
+
+	static Node newNode(int data)
+	{
+		Node temp = new Node();
+		temp.data = data;
+		temp.next = null;
+		return temp;
+	}
+
+	
+	static int countOfNodes(Node head)
+	{
+		int count = 0;
+		while (head != null) {
+			head = head.next;
+			count++;
+		}
+		return count;
+	}
+
+	
+	static Node deleteMid(Node head)
+	{
+		// Base cases
+		if (head == null)
+			return null;
+		if (head.next == null) {
+			return null;
+		}
+		Node copyHead = head;
+
+	
+		int count = countOfNodes(head);
+
+		
+		int mid = count / 2;
+
+		
+		while (mid-- > 1) {
+			head = head.next;
+		}
+
+
+		head.next = head.next.next;
+
+		return copyHead;
+	}
+
+
+	static void printList(Node ptr)
+	{
+		while (ptr != null) {
+			System.out.print(ptr.data + "->");
+			ptr = ptr.next;
+		}
+		System.out.println("NULL");
+	}
+
+	
+	public static void main(String[] args)
+	{
+		Node head = newNode(1);
+		head.next = newNode(2);
+		head.next.next = newNode(3);
+		head.next.next.next = newNode(4);
+
+		System.out.println("Given Linked List");
+		printList(head);
+
+		head = deleteMid(head);
+
+		System.out.println(
+			"Linked List after deletion of middle");
+		printList(head);
+	}
+}
+
+
+
+
+
+
+
+Q.2
+
+
+public class Solution {
+
+	static Node head;
+
+	
+	static class Node {
+		int data;
+		Node next;
+		Node(int d)
+		{
+			data = d;
+			next = null;
+		}
+	}
+
+	
+	static public void push(int new_data)
+	{
+
+		Node new_node = new Node(new_data);
+
+
+		new_node.next = head;
+
+		
+		head = new_node;
+	}
+
+
+	static boolean detectLoop(Node h)
+	{
+		HashSet<Node> s = new HashSet<Node>();
+		while (h != null) {
+			
+			if (s.contains(h))
+				return true;
+
+			
+			s.add(h);
+
+			h = h.next;
+		}
+
+		return false;
+	}
+
+
+	public static void main(String[] args)
+	{
+		LinkedList llist = new LinkedList();
+
+		llist.push(20);
+		llist.push(4);
+		llist.push(15);
+		llist.push(10);
+
+		
+		llist.head.next.next.next.next = llist.head;
+
+		if (detectLoop(head))
+			System.out.println("Loop Found");
+		else
+			System.out.println("No Loop");
+	}
+}
+
+
+
+
+
+
+Q.3
+
+class Solution {
+	Node head; 
+
+	
+	class Node {
+		int data;
+		Node next;
+		Node(int d)
+		{
+			data = d;
+			next = null;
+		}
+	}
+
+	
+	void printNthFromLast(int N)
+	{
+		int len = 0;
+		Node temp = head;
+
+		
+		while (temp != null) {
+			temp = temp.next;
+			len++;
+		}
+
+
+		if (len < N)
+			return;
+
+		temp = head;
+
+	
+		for (int i = 1; i < len - N + 1; i++)
+			temp = temp.next;
+
+		System.out.println(temp.data);
+	}
+
+	/* Inserts a new Node at front of the list. */
+	public void push(int new_data)
+	{
+		
+		Node new_node = new Node(new_data);
+
+
+		new_node.next = head;
+
+		
+		head = new_node;
+	}
+
+	
+	public static void main(String[] args)
+	{
+		LinkedList llist = new LinkedList();
+		llist.push(20);
+		llist.push(4);
+		llist.push(15);
+		llist.push(35);
+		
+		
+		llist.printNthFromLast(4);
+	}
+} 
+
+
+
+
+
+
+Q.4
+
+class Solution {
+	public static void main(String args[])
+	{
+		Node one = new Node(1);
+		Node two = new Node(2);
+		Node three = new Node(3);
+		Node four = new Node(4);
+		Node five = new Node(3);
+		Node six = new Node(2);
+		Node seven = new Node(1);
+		one.ptr = two;
+		two.ptr = three;
+		three.ptr = four;
+		four.ptr = five;
+		five.ptr = six;
+		six.ptr = seven;
+		boolean condition = isPalindrome(one);
+		System.out.println("isPalidrome :" + condition);
+	}
+	static boolean isPalindrome(Node head)
+	{
+
+		Node slow = head;
+		boolean ispalin = true;
+		Stack<Integer> stack = new Stack<Integer>();
+
+		while (slow != null) {
+			stack.push(slow.data);
+			slow = slow.ptr;
+		}
+
+		while (head != null) {
+
+			int i = stack.pop();
+			if (head.data == i) {
+				ispalin = true;
+			}
+			else {
+				ispalin = false;
+				break;
+			}
+			head = head.ptr;
+		}
+		return ispalin;
+	}
+}
+
+class Node {
+	int data;
+	Node ptr;
+	Node(int d)
+	{
+		ptr = null;
+		data = d;
+	}
+}
+
+
+
+
+
+
+Q.8
+
+class Solution {
+
+	
+	static class Node {
+		int data;
+		Node next;
+	}
+
+	
+	static boolean isCircular(Node head)
+	{
+		
+		if (head == null)
+			return true;
+
+		
+		Node node = head.next;
+
+		
+		while (node != null && node != head)
+			node = node.next;
+
+		
+		
+		return (node == head);
+	}
+
+
+	static Node newNode(int data)
+	{
+		Node temp = new Node();
+		temp.data = data;
+		temp.next = null;
+		return temp;
+	}
+
+	
+	public static void main(String args[])
+	{
+		
+		Node head = newNode(1);
+		head.next = newNode(2);
+		head.next.next = newNode(3);
+		head.next.next.next = newNode(4);
+
+		System.out.print(isCircular(head) ? "Yes\n": "No\n");
+
+		
+		head.next.next.next.next = head;
+
+		System.out.print(isCircular(head) ? "Yes\n": "No\n");
+	}
+}
+
+
+

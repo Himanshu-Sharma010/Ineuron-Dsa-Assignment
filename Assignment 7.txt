@@ -1,0 +1,139 @@
+Q.1
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+
+        int map1[]=new int[200];
+        int map2[]=new int[200];
+
+        if(s.length()!=t.length())
+            return false;
+
+
+        for(int i=0;i<s.length();i++)
+        {
+            if(map1[s.charAt(i)]!=map2[t.charAt(i)])
+                return false;
+
+            map1[s.charAt(i)]=i+1;
+            map2[t.charAt(i)]=i+1;
+        }
+        return true;
+    }
+}
+
+
+
+
+Q.3
+class Solution {
+    public String addStrings(String num1, String num2) {
+
+        int carry=0;
+        StringBuilder result = new StringBuilder();
+        int i=num1.length() -1;
+        int j=num2.length() -1;
+        while(i>=0 || j>=0)
+        {
+            int n1 = (i<0)?0:num1.charAt(i)-'0';
+            int n2 = (j<0)?0:num2.charAt(j)-'0';
+
+            int sum=n1+n2+carry;
+            result.append(sum%10);
+            carry=sum/10;
+
+            i--;
+            j--;
+        }
+        if(carry==1){
+            result.append(carry);
+        }
+        return result.reverse().toString();
+    }
+}
+
+
+
+
+
+
+Q.4
+class Solution {
+    public String reverseWords(String s) {
+        char[] c = s.toCharArray();
+        int i = 0, j = 0;
+        for (;j<c.length;j++) {
+            if (c[j] == ' ') {
+                reverseWord(c, i, j-1);
+                i = j+1;
+            } 
+        }
+        reverseWord(c, i, j-1);
+        return new String(c);
+    }
+    
+    private void reverseWord(char[] c, int i, int j) {
+        while (i < j) {
+            char temp = c[i];
+            c[i++] = c[j];
+            c[j--] = temp;
+        }
+    }
+}
+
+
+
+
+Q.5
+class Solution {
+    private void reverse(char[] arr,int i,int j){
+        while(i<j){
+            char temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+            i++;
+            j--;
+        }
+    }
+    public String reverseStr(String s, int k) {
+        char[] arr=s.toCharArray();
+        int n=arr.length,i=0;
+        while(i<n){
+                reverse(arr,i,Math.min(i+k-1,n-1));
+                i+=2*k;
+        }
+        return new String(arr);
+    }
+}
+
+
+
+
+
+Q.7
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+       return getString(s).equals(getString(t)); 
+    }
+    public String getString(String str) {
+        int n = str.length();
+        int count = 0;
+        String result = "";
+        for(int i = n - 1; i >= 0; i --) {
+            char ch = str.charAt(i);
+            if(ch == '#')
+            count ++;
+            else {
+            if(count > 0) 
+            count --;
+            else
+            result += ch;
+            }
+        }
+         return result;
+    }
+}
+
+
+
+
+
